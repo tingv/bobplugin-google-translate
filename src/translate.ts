@@ -1,6 +1,9 @@
 import querystring from 'querystring';
 import * as Bob from '@bob-plug/core';
 import { userAgent } from './util';
+import { standardToNoStandard } from './lang';
+
+var CryptoJS = require("crypto-js");
 
 interface QueryOption {
   to?: Bob.Language;
@@ -20,7 +23,11 @@ var resultCache = new Bob.CacheResult('translate-result');
  */
 async function _translate(text: string, options: QueryOption = {}): Promise<Bob.TranslateResult> {
   const { from = 'auto', to = 'auto', cache = 'disable', tld = 'com', timeout = 10000 } = options;
-  const cacheKey = `${text}${from}${to}`;
+  
+  const sourceLanguage = standardToNoStandard(from);
+  const targetLanguage = standardToNoStandard(to);
+
+  const cacheKey = CryptoJS.MD5(`${text}${from}${to}`);
   if (cache === 'enable') {
     const _cacheData = resultCache.get(cacheKey);
     if (_cacheData) return _cacheData;
@@ -35,9 +42,9 @@ async function _translate(text: string, options: QueryOption = {}): Promise<Bob.
 
     // 查询参数
     const data = {
-      sl: from,
-      tl: to,
-      hl: to,
+      sl: sourceLanguage,
+      tl: targetLanguage,
+      hl: targetLanguage,
       q: text,
     };
   
@@ -58,12 +65,12 @@ async function _translate(text: string, options: QueryOption = {}): Promise<Bob.
     if (!Bob.util.isString(html)) throw Bob.util.error('api', '接口返回数据类型出错', res);
     if (html.indexOf('"result-container"') == -1 ) throw Bob.util.error('api', '接口返回数据不存在', res);
     
-    const matchResults = html.match(/"result-container">([\s\S]*)<\/div><div class="links-container"/)  // 提取结果
+    const matchResults = html.match(/"result-container">([\s\S]*)<\/div><div class="links-container"/);  // 提取结果
     
     if (!matchResults) throw Bob.util.error('api', '接口返回数据出错', res);
     if(typeof matchResults[1] === "undefined") throw Bob.util.error('api', '接口返回数据异常', res);
   
-    const translateResult = matchResults[1].split("\n")  // 最终结果
+    const translateResult = matchResults[1].split("\n");  // 最终结果
 
     result.toParagraphs = translateResult;
     result.fromParagraphs = [];
