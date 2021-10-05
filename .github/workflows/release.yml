@@ -1,0 +1,39 @@
+name: Release
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GIT_TOKEN }}
+
+      - uses: actions/setup-node@v2-beta
+        with:
+          node-version: '14'
+
+      - name: Install Dependencies And Build
+        run: |
+          yarn install
+          yarn run build
+
+      - name: Commit files
+        run: |
+          git config --global user.name 'TingV'
+          git config --global user.email 'TingV@users.noreply.github.com'
+          git commit -am "chore: 更新版本文件"
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GIT_TOKEN }}
+
+      - uses: ncipollo/release-action@v1
+        with:
+          artifacts: 'release/*.bobplugin'
+          token: ${{ secrets.GIT_TOKEN }}
