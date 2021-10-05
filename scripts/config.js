@@ -6,7 +6,7 @@
 const config = {
   pkgName: 'bobplugin-google-translate',
   github:{
-    username: 'TingV',
+    username: 'tingv',
     repository: 'bobplugin-google-translate'
   }
 };
