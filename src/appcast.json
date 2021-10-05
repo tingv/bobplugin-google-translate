@@ -1,12 +1,4 @@
 {
   "identifier": "com.tingv.bobplugin.googletranslate",
-  "versions": [
-    {
-      "version": "1.0.0",
-      "desc": "https://github.com/tingv/bobplugin-google-translate/blob/master/CHANGELOG.md",
-      "sha256": "4208e4cd3d5954fc275c6c6bdc473870be75d9d2ea4bc0bedfd5912d4763ffa3",
-      "url": "https://github.com/tingv/bobplugin-google-translate/releases/download/v1.0.0/bobplugin-google-translate-v1.0.0.bobplugin",
-      "minBobVersion": "0.5.0"
-    }
-  ]
+  "versions": []
 }
