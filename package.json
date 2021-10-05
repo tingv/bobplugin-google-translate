@@ -1,6 +1,6 @@
 {
   "name": "bobplugin-google-translate",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Google 翻译插件，无需申请 API 秘钥",
   "homepage": "https://github.com/TingV/bobplugin-google-translate",
   "repository": "https://github.com/TingV/bobplugin-google-translate.git",

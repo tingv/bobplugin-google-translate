@@ -2,13 +2,24 @@ import { Language } from '@bob-plug/core';
 
 type ILang = [Language, string];
 
-// https://ripperhe.gitee.io/bob/#/plugin/addtion/language
+// https://github.com/ripperhe/Bob/blob/master/docs/plugin/addtion/language.md
+// https://cloud.google.com/translate/docs/languages
 // Bob 语种标识和第三方语种标识符映射关系 [['bob语种, '第三方接口语种']]
 var languageList: ILang[] = [
   ['auto', 'auto'],
   ['zh-Hans', 'zh-CN'],
   ['zh-Hant', 'zh-TW'],
   ['en', 'en'],
+  ['de', 'de'],
+  ['fr', 'fr'],
+  ['it', 'it'],
+  ['ja', 'ja'],
+  ['ko', 'ko'],
+  ['es', 'es'],
+  ['nl', 'nl'],
+  ['pl', 'pl'],
+  ['pt', 'pt'],
+  ['ru', 'ru'],
 ];
 
 // Bob 语种标识符

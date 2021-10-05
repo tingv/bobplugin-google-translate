@@ -1,13 +1,6 @@
 import * as Bob from '@bob-plug/core';
 import { getSupportLanguages } from './lang';
-
 import { _translate } from './translate';
-
-
-
-
-
-
 
 // 使用 bob 实现的 require 方法加载本地库,
 var formatString = require('./libs/human-string');
@@ -22,7 +15,7 @@ export function supportLanguages(): Bob.supportLanguages {
 export function translate(query: Bob.TranslateQuery, completion: Bob.Completion) {
   const { text = '', detectFrom, detectTo } = query;
   const str = formatString(text);
-  const params = { from: detectFrom, to: detectTo, cache: Bob.api.getOption('cache') };
+  const params = { from: detectFrom, to: detectTo, cache: Bob.api.getOption('cache'), tld: Bob.api.getOption('tld'), };
   let res = _translate(str, params);
 
   res
