@@ -30,15 +30,15 @@
       "identifier": "tld",
       "type": "menu",
       "title": "接口域名",
-      "defaultValue": "cn",
+      "defaultValue": "com",
       "menuValues": [
         {
-          "title": "google.cn(国内)",
-          "value": "cn"
+          "title": "google.com (国际)",
+          "value": "com"
         },
         {
-          "title": "google.com(国际)",
-          "value": "com"
+          "title": "google.cn (国内)",
+          "value": "cn"
         }
       ]
     }

@@ -19,7 +19,7 @@ var resultCache = new Bob.CacheResult('translate-result');
  * @return {object} 一个符合 bob 识别的翻译结果对象
  */
 async function _translate(text: string, options: QueryOption = {}): Promise<Bob.TranslateResult> {
-  const { from = 'auto', to = 'auto', cache = 'enable', tld = 'cn', timeout = 10000 } = options;
+  const { from = 'auto', to = 'auto', cache = 'enable', tld = 'com', timeout = 10000 } = options;
   const cacheKey = `${text}${from}${to}`;
   if (cache === 'enable') {
     const _cacheData = resultCache.get(cacheKey);
