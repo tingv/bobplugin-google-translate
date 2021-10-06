@@ -2,6 +2,13 @@
   "identifier": "com.tingv.bobplugin.googletranslate",
   "versions": [
     {
+      "version": "1.1.0",
+      "desc": "https://github.com/tingv/bobplugin-google-translate/blob/master/CHANGELOG.md",
+      "sha256": "df3fe9157a6fff14bdb39408d5cc70664dad6b854981dd135b43ea5cc6b34090",
+      "url": "https://github.com/tingv/bobplugin-google-translate/releases/download/v1.1.0/bobplugin-google-translate-v1.1.0.bobplugin",
+      "minBobVersion": "0.5.0"
+    },
+    {
       "version": "1.0.2",
       "desc": "https://github.com/tingv/bobplugin-google-translate/blob/master/CHANGELOG.md",
       "sha256": "b3e8c58bd140338c8585b3c15f51fe8b16fdf76925ec3a23698fb8cbe4c6ad66",
