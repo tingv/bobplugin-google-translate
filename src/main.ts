@@ -15,7 +15,7 @@ export function supportLanguages(): Bob.supportLanguages {
 export function translate(query: Bob.TranslateQuery, completion: Bob.Completion) {
   const { text = '', detectFrom, detectTo } = query;
   const str = formatString(text);
-  const params = { from: detectFrom, to: detectTo, cache: Bob.api.getOption('cache'), tld: Bob.api.getOption('tld'), };
+  const params = { from: detectFrom, to: detectTo, cache: Bob.api.getOption('cache'), tld: Bob.api.getOption('tld'), iBooksCleanup: Bob.api.getOption('iBooksCleanup'), };
   let res = _translate(str, params);
 
   res

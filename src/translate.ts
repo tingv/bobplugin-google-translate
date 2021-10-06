@@ -11,6 +11,7 @@ interface QueryOption {
   cache?: string;
   tld?: string;
   timeout?: number;
+  iBooksCleanup?: string;
 }
 
 var resultCache = new Bob.CacheResult('translate-result');
@@ -22,10 +23,18 @@ var resultCache = new Bob.CacheResult('translate-result');
  * @return {object} 一个符合 bob 识别的翻译结果对象
  */
 async function _translate(text: string, options: QueryOption = {}): Promise<Bob.TranslateResult> {
-  const { from = 'auto', to = 'auto', cache = 'disable', tld = 'com', timeout = 10000 } = options;
+  const { from = 'auto', to = 'auto', cache = 'disable', tld = 'com', timeout = 10000, iBooksCleanup = 'disable' } = options;
   
   const sourceLanguage = standardToNoStandard(from);
   const targetLanguage = standardToNoStandard(to);
+
+  // 清理从 iBooks 中提取的内容
+  if (iBooksCleanup === 'enable') {
+    const matchText = text.match(/^“([\s\S]*)”\n+摘录来自:/);
+    if (matchText && typeof matchText[1] !== "undefined") {
+      text = matchText[1];
+    }
+  }
 
   const cacheKey = CryptoJS.MD5(`${text}${from}${to}`);
   if (cache === 'enable') {

@@ -1,7 +1,7 @@
 {
   "identifier": "com.tingv.bobplugin.googletranslate",
   "category": "translate",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "name": "Google 翻译",
   "summary": "Google 翻译插件，无需申请 API 秘钥",
   "author": "TingV",
@@ -39,6 +39,22 @@
         {
           "title": "google.cn (国内)",
           "value": "cn"
+        }
+      ]
+    },
+    {
+      "identifier": "iBooksCleanup",
+      "type": "menu",
+      "title": "iBooks 清理",
+      "defaultValue": "disable",
+      "menuValues": [
+        {
+          "title": "开启",
+          "value": "enable"
+        },
+        {
+          "title": "关闭",
+          "value": "disable"
         }
       ]
     }
